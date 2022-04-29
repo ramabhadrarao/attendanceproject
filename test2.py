@@ -89,7 +89,10 @@ def display_datagrid():
         adf['attendance'].append(selected_list[c])
     new = pd.DataFrame.from_dict(adf)
     new.index = np.arange(1, len(new)+1)
+    new.query("attendance == False",inplace=True)
+    absentees=new["regdno"].to_list()
     st.dataframe(new)
+    st.warning("Dear Parent today the following student(s) are absent for period:("+str(period)+")"+str(absentees))
 
 
 
