@@ -60,15 +60,16 @@ def form1():
 
 
 def display_datagrid():
+    global data
     data = st.cache(pd.read_csv)('MCA I yr.csv', nrows=100)
-
-    # Select some rows using st.multiselect. This will break down when you have >1000 rows.
-    st.write('### Full Dataset', data)
-    selected_indices = st.multiselect('Select rows:', data.index)
-    global selected_rows
-    selected_rows = data.loc[selected_indices]
-    st.write('### Selected Rows', selected_rows)        
-    
+    global selected_list
+    selected_list=[]
+    data_list=data.values.tolist()
+    for row in data_list:
+        x=st.checkbox(row[1],value=True)
+        selected_list.append(x)
+        
+    st.write(selected_list)
 
 
 
@@ -83,7 +84,7 @@ def convert_df(df):
 form1()
 
 display_datagrid()
-csv = convert_df(selected_rows)
+csv = convert_df(data)
 st.download_button(
    "Press to Download",
    csv,
