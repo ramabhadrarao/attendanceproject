@@ -103,7 +103,7 @@ def convert_df(df):
 
 
 form1()
-if branch == "MCA" and sem="I-I":
+if branch == "MCA" and sem == "I-I":
         display_datagrid()
         csv = convert_df(new)
         st.download_button(
