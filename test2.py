@@ -1,16 +1,21 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 
 
 
 def form1():
+    global batch
     batch = st.selectbox(
         'select batch?',
         ('2020-2022', '2021-2023', 'Mobile phone'))
 
     #st.write('You selected:', batch)
+    global branch
+    global courses
+    global sem
+    global attdate
+    global period
     branch = st.selectbox(
         'select branch?',
         ('B.Tech', 'M.Tech', 'MCA', 'MBA'))
@@ -61,15 +66,30 @@ def form1():
 
 def display_datagrid():
     global data
+    global adf,new
+    new=pd.DataFrame(columns=['batch','branch','courses','sem','attdate','period','regdno','attendance'])
+    adf={'batch':[],'branch':[],'courses':[],'sem':[],'attdate':[],'period':[],'regdno':[],'attendance':[]}
     data = st.cache(pd.read_csv)('MCA I yr.csv', nrows=100)
     global selected_list
     selected_list=[]
     data_list=data.values.tolist()
+    rcount=data.shape[0]
     for row in data_list:
         x=st.checkbox(row[1],value=True)
         selected_list.append(x)
-        
-    st.write(selected_list)
+
+    for c in range(0,rcount):
+        adf['batch'].append(batch)
+        adf['branch'].append(branch)
+        adf['courses'].append(courses)
+        adf['sem'].append(sem)
+        adf['attdate'].append(attdate)
+        adf['period'].append(period)
+        adf['regdno'].append(data_list[c][1])
+        adf['attendance'].append(selected_list[c])
+    new = pd.DataFrame.from_dict(adf)
+    new.index = np.arange(1, len(new)+1)
+    st.dataframe(new)
 
 
 
@@ -77,14 +97,15 @@ def display_datagrid():
 
 @st.cache
 def convert_df(df):
-   return df.to_csv().encode('utf-8')
+    new.index = np.arange(1, len(new)+1)
+    return df.to_csv().encode('utf-8')
 
 
 
 form1()
 
 display_datagrid()
-csv = convert_df(data)
+csv = convert_df(new)
 st.download_button(
    "Press to Download",
    csv,
