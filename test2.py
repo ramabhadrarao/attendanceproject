@@ -103,13 +103,13 @@ def convert_df(df):
 
 
 form1()
-
-display_datagrid()
-csv = convert_df(new)
-st.download_button(
-   "Press to Download",
-   csv,
-   "file.csv",
-   "text/csv",
-   key='download-csv'
-)
+if branch == "MCA" and sem="I-I":
+        display_datagrid()
+        csv = convert_df(new)
+        st.download_button(
+        "Press to Download",
+        csv,
+        "file.csv",
+        "text/csv",
+        key='download-csv'
+        )
