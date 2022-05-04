@@ -5,12 +5,7 @@ import mysql.connector
 global mydb
 global data
 
-mydb = mysql.connector.connect(
-  host="111.118.215.51",
-  user="joillhqw_attendance2022",
-  password="nihita1981",
-  database="joillhqw_attendance2022"
-)
+
 
 
 
