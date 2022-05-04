@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import mysql.connector
 global mydb
-global data
 
 mydb = mysql.connector.connect(
   host="111.118.215.51",
@@ -33,7 +32,7 @@ def form1():
     if branch == 'B.Tech':
         courses = st.selectbox(
             'select courses?',
-            ('CSE', 'AIML', 'ECE', 'EEE','Mechanical','Civil'))
+            ('CSE', 'AIML', 'ECE','IT','ROBOTICS', 'EEE','Mechanical','Civil'))
     if branch == 'M.Tech':
         courses = st.selectbox(
             'select courses?',
@@ -76,9 +75,11 @@ def form1():
 
 
 def display_datagrid():
+    global data
     global adf,new
     new=pd.DataFrame(columns=['batch','branch','courses','sem','attdate','period','regdno','attendance'])
     adf={'batch':[],'branch':[],'courses':[],'sem':[],'attdate':[],'period':[],'regdno':[],'attendance':[]}
+    data = st.cache(pd.read_csv)('MCA I yr.csv', nrows=100)
     global selected_list
     selected_list=[]
     data_list=data.values.tolist()
@@ -153,17 +154,6 @@ def convert_df(df):
 
 form1()
 if branch == "MCA" and sem == "I-I":
-        data = st.cache(pd.read_csv)('MCA I yr.csv', nrows=100)
         display_datagrid()
-if branch == "MCA" and sem == "II-II":
-        data = st.cache(pd.read_csv)('MCA II yr.csv', nrows=100)
-        display_datagrid()
-
-
-
-
-
-
-
         #csv = convert_df(cons)
         #st.download_button("Press to Download", csv, "file.csv", "text/csv",  key='download-csv' )
