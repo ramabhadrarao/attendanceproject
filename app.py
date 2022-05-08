@@ -4,6 +4,7 @@ import numpy as np
 import mysql.connector
 global mydb
 global data
+global staffsubject
 
 def check_password():
     """Returns `True` if the user had a correct password."""
@@ -128,8 +129,6 @@ def form1():
     periodtype=st.selectbox("Select Period Type",('Theory','Lab'))
     if period > 6 and periodtype == "Lab":
         st.warning("Lab Minimum Periods are 3 so, Lab must start on or before 6th period.Attendance can save period by period Only")
-    staffsubject=st.cache(pd.read_csv)('facultysubjectassignmentcsv.csv', nrows=500)
-    #staffsubject=pd.read_csv("facultysubjectassignmentcsv.csv")
     sas=pd.DataFrame(staffsubject)
     faculty=staffsubject['FacultyName'].unique()
     flist=[]
@@ -249,8 +248,7 @@ def convert_df(df):
 
 if check_password():
     mydb = mysql.connector.connect(**st.secrets["mysql"])
-    
-
+    staffsubject=st.cache(pd.read_csv)('facultysubjectassignmentcsv.csv', nrows=500)
     form1()
     if branch == "B.Tech"  and courses == "CSE" and sem == "IV-II":
             data = st.cache(pd.read_csv)('cseiv.csv', nrows=100)
