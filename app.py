@@ -182,6 +182,8 @@ def display_datagrid():
     for row in data_list:
         x=st.checkbox(row[1],value=True)
         selected_list.append(x)
+    if 'selected_list' not in st.session_state:
+        st.session_state.selected_list = True
 
     for c in range(0,rcount):
         adf['batch'].append(batch)
