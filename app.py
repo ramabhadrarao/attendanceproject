@@ -128,7 +128,8 @@ def form1():
     periodtype=st.selectbox("Select Period Type",('Theory','Lab'))
     if period > 6 and periodtype == "Lab":
         st.warning("Lab Minimum Periods are 3 so, Lab must start on or before 6th period.Attendance can save period by period Only")
-    staffsubject=pd.read_csv("facultysubjectassignmentcsv.csv")
+    staffsubject=st.cache(pd.read_csv)('facultysubjectassignmentcsv.csv', nrows=500)
+    #staffsubject=pd.read_csv("facultysubjectassignmentcsv.csv")
     sas=pd.DataFrame(staffsubject)
     faculty=staffsubject['FacultyName'].unique()
     flist=[]
