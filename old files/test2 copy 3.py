@@ -5,7 +5,12 @@ import mysql.connector
 global mydb
 global data
 
-
+mydb = mysql.connector.connect(
+  host="111.118.215.51",
+  user="joillhqw_attendance2022",
+  password="nihita1981",
+  database="joillhqw_attendance2022"
+)
 
 
 
@@ -153,6 +158,126 @@ if branch == "MCA" and sem == "I-I":
 if branch == "MCA" and sem == "II-II":
         data = st.cache(pd.read_csv)('MCA II yr.csv', nrows=100)
         display_datagrid()
+
+if branch == "CSE-A" and sem == "I-II":
+        data = st.cache(pd.read_csv)('CSE-A I yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CSE-B" and sem == "I-II":
+        data = st.cache(pd.read_csv)('CSE-B I yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CSE-C" and sem == "I-II":
+        data = st.cache(pd.read_csv)('CSE-C I yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "AIML" and sem == "I-II":
+        data = st.cache(pd.read_csv)('AIML I yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "AIML" and sem == "II-II":
+        data = st.cache(pd.read_csv)('AIML II yr.csv', nrows=100)
+        display_datagrid()
+
+
+
+if branch == "CSE-A" and sem == "II-II":
+        data = st.cache(pd.read_csv)('CSE-A II yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CSE-B" and sem == "II-II":
+        data = st.cache(pd.read_csv)('CSE-B II yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CSE-C" and sem == "II-II":
+        data = st.cache(pd.read_csv)('CSE-C II yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CSE-A" and sem == "III-II":
+        data = st.cache(pd.read_csv)('CSE-A III yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CSE-B" and sem == "III-II":
+        data = st.cache(pd.read_csv)('CSE-B III yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CSE-C" and sem == "III-II":
+        data = st.cache(pd.read_csv)('CSE-C III yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-A" and sem == "I-II":
+        data = st.cache(pd.read_csv)('ECE-A I yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-B" and sem == "I-II":
+        data = st.cache(pd.read_csv)('ECE-B I yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-C" and sem == "I-II":
+        data = st.cache(pd.read_csv)('ECE-C I yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-D" and sem == "I-II":
+        data = st.cache(pd.read_csv)('ECE-D I yr.csv', nrows=100)
+        display_datagrid()
+
+
+if branch == "ECE-A" and sem == "II-II":
+        data = st.cache(pd.read_csv)('ECE-A II yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-B" and sem == "II-II":
+        data = st.cache(pd.read_csv)('ECE-B II yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-C" and sem == "II-II":
+        data = st.cache(pd.read_csv)('ECE-C II yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-D" and sem == "II-II":
+        data = st.cache(pd.read_csv)('ECE-D II yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-A" and sem == "III-II":
+        data = st.cache(pd.read_csv)('ECE-A III yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-B" and sem == "III-II":
+        data = st.cache(pd.read_csv)('ECE-B III yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-C" and sem == "III-II":
+        data = st.cache(pd.read_csv)('ECE-C III yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "ECE-D" and sem == "III-II":
+        data = st.cache(pd.read_csv)('ECE-D III yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "IT" and sem == "I-II":
+        data = st.cache(pd.read_csv)('IT I yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "IT" and sem == "II-II":
+        data = st.cache(pd.read_csv)('IT II yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "IT" and sem == "III-II":
+        data = st.cache(pd.read_csv)('IT III yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CIVIL" and sem == "I-II":
+        data = st.cache(pd.read_csv)('CIVI I yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CIVIL" and sem == "II-II":
+        data = st.cache(pd.read_csv)('CIVI II yr.csv', nrows=100)
+        display_datagrid()
+
+if branch == "CIVIL" and sem == "III-II":
+        data = st.cache(pd.read_csv)('CIVIL III yr.csv', nrows=100)
+        display_datagrid()
+
 
 
 
