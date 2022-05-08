@@ -130,7 +130,8 @@ def form1():
     if period > 6 and periodtype == "Lab":
         st.warning("Lab Minimum Periods are 3 so, Lab must start on or before 6th period.Attendance can save period by period Only")
     sas=pd.DataFrame(staffsubject)
-    faculty=staffsubject['FacultyName'].unique()
+    saf_selected=sas.loc[(sas['Course'] == courses) & (sas['Semester'] == sem)]
+    faculty=saf_selected['FacultyName'].unique()
     flist=[]
     for fl in faculty:
         flist.append(fl)
