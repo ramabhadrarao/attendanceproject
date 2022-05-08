@@ -85,9 +85,12 @@ def form1():
     global periodtype
     global subject_selected
     global faculty_selected
+    global fetch
     branch = st.selectbox(
         'select branch?',
         ('B.Tech', 'M.Tech', 'MCA', 'MBA'))
+    if 'branch' not in st.session_state:
+        st.session_state.barnch = True
     if branch == 'B.Tech':
         courses = st.selectbox(
             'select courses?',
@@ -108,6 +111,8 @@ def form1():
             value='MBA',
             disabled=True
             )
+    if 'courses' not in st.session_state:
+        st.session_state.courses = True
     if branch == 'B.Tech':
         sem = st.selectbox(
             'select Semester?',
@@ -124,9 +129,17 @@ def form1():
         sem = st.selectbox(
             'select Semester?',
             ('I-I', 'I-II', 'II-I', 'II-II'))
+    if 'sem' not in st.session_state:
+        st.session_state.sem = True
     attdate=st.date_input('Select Date:')
+    if 'attdate' not in st.session_state:
+        st.session_state.attdate = True
     period=st.number_input('Select Period',min_value=1,max_value=8)
+    if 'period' not in st.session_state:
+        st.session_state.period = True
     periodtype=st.selectbox("Select Period Type",('Theory','Lab'))
+    if 'periodtype' not in st.session_state:
+        st.session_state.periodtype = True
     if period > 6 and periodtype == "Lab":
         st.warning("Lab Minimum Periods are 3 so, Lab must start on or before 6th period.Attendance can save period by period Only")
     sas=pd.DataFrame(staffsubject)
@@ -136,6 +149,8 @@ def form1():
     for fl in faculty:
         flist.append(fl)
     faculty_selected=st.selectbox("Select Faculty",flist)
+    if 'faculty_selected' not in st.session_state:
+        st.session_state.faculty_selected = True
     #subjects=pd.DataFrame(staffsubject)
     sas_selected=sas.loc[(sas['FacultyName'] == faculty_selected) & (sas['Course'] == courses) & (sas['Semester'] == sem)]
     subjects=sas_selected['Subject'].unique()
@@ -143,6 +158,9 @@ def form1():
     for sl in subjects:
         slist.append(sl)
     subject_selected=st.selectbox("Select Subject",slist)
+    if 'subject_selected' not in st.session_state:
+        st.session_state.subject_selected = True
+    
     
 
 
@@ -254,6 +272,7 @@ if check_password():
     if branch == "B.Tech"  and courses == "CSE" and sem == "IV-II":
             data = st.cache(pd.read_csv)('cseiv.csv', nrows=100)
             display_datagrid()
+                
     if branch == "B.Tech"  and courses == "CSE" and sem == "II-II":
             data = st.cache(pd.read_csv)('cseii.csv', nrows=100)
             display_datagrid()
