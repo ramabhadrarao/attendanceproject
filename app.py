@@ -68,7 +68,7 @@ st.set_page_config(page_title="Swarnandhra", page_icon=None, layout="centered", 
 
 
 
-@st.cache
+@st.cache(suppress_st_warning=True)
 def form1():
     st.header("Student Daily Attendance")
     global batch
@@ -169,7 +169,7 @@ def form1():
     
 
 
-@st.cache
+@st.cache(suppress_st_warning=True)
 def display_datagrid():
     global adf,new
     new=pd.DataFrame(columns=['batch','branch','courses','sem','attdate','period','regdno','attendance','subject','faculty','periodtype'])
